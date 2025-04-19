@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ollama DeepSeek-R1 Chat</title>
+  <title>Ollama phi3 Chat</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -63,7 +63,7 @@
   </style>
 </head>
 <body>
-  <h1>Chat with DeepSeek-R1 (1.5B)</h1>
+  <h1>Chat with phi3 (1.5B)</h1>
   <div id="chat-container">
     <div id="chat-messages"></div>
     <div id="input-area">
@@ -93,7 +93,7 @@
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            model: "deepseek-r1:1.5b",
+            model: "phi3",
             prompt: prompt,
             stream: false,
           }),
@@ -110,10 +110,28 @@
 
     // Handle user input
     async function handleSend() {
-      const prompt = userInput.value.trim();
+      const context = `
+    Ты — ИИ-ассистент технической поддержки компании "ТехноКорп". 
+    Твои задачи:
+    1. Вежливо отвечать на вопросы клиентов
+    2. Решать проблемы с продуктами компании
+    3. Предлагать стандартные решения для частых вопросов
+    
+    Инструкции:
+    - Всегда сохраняй профессиональный тон
+    - Если не знаешь ответа — попроси уточнить детали
+    - Не выдумывай информацию
+    
+    Продукты компании:
+    1. CloudBox (облачное хранилище)
+    2. SafeVPN (VPN-сервис)
+    3. OfficePro (офисный пакет)
+    `;
+    const userMessage = userInput.value.trim()
+      const prompt = `${context}\n\nКлиент: ${userMessage}`;
       if (!prompt) return;
 
-      addMessage("user", prompt);
+      addMessage("user", userMessage);
       userInput.value = ""; // Clear input
 
       // Show "typing..." indicator
