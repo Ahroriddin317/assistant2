@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" href="style.css" />
+  <head>
+    <title>JavaScript practice</title>
+  </head>
+  <body>
+    <h2>What JavaScript can do?</h2>
+    <p id="demo">JS can work with html</p>
+    <div id="bugs"></div>
+
+    <dialog id="myDialog">
+      <iframe src="chat.html" width="100%" height="100%"></iframe>
+      <form class="options" method="dialog">
+        <button class="button button--dark" value="debug">Дави его!</button>
+        <button class="button button--light" value="reproduction">
+          Каждая жизнь священна
+        </button>
+      </form>
+    </dialog>
+    <script src="js/main.js"></script>
+    <button type="button" onclick="window.myDialog.showModal()">
+      Открыть как модалку
+    </button>
+
+    <!-- <div class="wrap">
+      <a href="#" class="previous">&laquo; Previous</a>
+      <a href="#" class="next">Next &raquo;</a> 
+
+      <div class="left" aling="left">
+        <a href="#" class="previous round">&#8249; BACK</a>
+      </div>
+      <div class="right" aling="right">
+        <a href="#" class="next round">NEXT &#8250;</a>
+      </div>
+    </div> -->
+  </body>
+</html>
