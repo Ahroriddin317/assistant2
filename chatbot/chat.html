@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ollama phi3 Chat</title>
+  <title>Ollama Chat</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,34 +13,41 @@
       padding: 20px;
       background-color: #f5f5f5;
     }
+
     #chat-container {
       background: white;
       border-radius: 10px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       overflow: hidden;
     }
+
     #chat-messages {
       height: 400px;
       overflow-y: auto;
       padding: 20px;
     }
+
     .message {
       margin-bottom: 15px;
       line-height: 1.5;
     }
+
     .user-message {
       color: #2c3e50;
       font-weight: bold;
     }
+
     .bot-message {
       color: #3498db;
     }
+
     #input-area {
       display: flex;
       padding: 10px;
       background: #eee;
       border-top: 1px solid #ddd;
     }
+
     #user-input {
       flex: 1;
       padding: 10px;
@@ -47,6 +55,7 @@
       border-radius: 4px;
       font-size: 16px;
     }
+
     #send-button {
       margin-left: 10px;
       padding: 10px 20px;
@@ -57,13 +66,15 @@
       cursor: pointer;
       font-size: 16px;
     }
+
     #send-button:hover {
       background: #2980b9;
     }
   </style>
 </head>
+
 <body>
-  <h1>Chat with phi3 (1.5B)</h1>
+  <h1>Chat with Ollama (1.5B)</h1>
   <div id="chat-container">
     <div id="chat-messages"></div>
     <div id="input-area">
@@ -93,7 +104,7 @@
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            model: "phi3",
+            model: "deepseek-r1:1.5b",
             prompt: prompt,
             stream: false,
           }),
@@ -127,8 +138,8 @@
     2. SafeVPN (VPN-сервис)
     3. OfficePro (офисный пакет)
     `;
-    const userMessage = userInput.value.trim()
-      const prompt = `${context}\n\nКлиент: ${userMessage}`;
+      const userMessage = userInput.value.trim()
+      const prompt = `${context}\n\nМой вопрос: ${userMessage}`;
       if (!prompt) return;
 
       addMessage("user", userMessage);
@@ -156,4 +167,5 @@
     });
   </script>
 </body>
+
 </html>
